@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [ $(whoami) != "root" ]; then
+        echo "You must be root."
+        exit 1
+fi
+
+if [ -z $1 ]; then
+        echo "Error: A User must be specified"
+        echo "Usage: zsh-ln 'user'"
+        exit 2
+fi
+
+# Gets the user's home path
+user_home_dir=$(eval echo ~$1)
+
+# Copies all the zsh and oh-my-zsh configuration files
+cp -r $HOME/.zshrc $user_home_dir/
+cp -r $HOME/.oh-my-zsh $user_home_dir/
+cp -r $HOME/.shell.pre-oh-my-zsh $user_home_dir/
+cp -r $HOME/.zsh_history $user_home_dir/
+
+# Grants user ownment
+chown $1:$1 $user_home_dir/.zshrc
+chown $1:$1 $user_home_dir/.oh-my-zsh
+chown $1:$1 $user_home_dir/.shell.pre-oh-my-zsh
+chown $1:$1 $user_home_dir/.zsh_history
