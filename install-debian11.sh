@@ -19,3 +19,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 # Removing and downloading custom .zshrc file
 rm $HOME/.zshrc
 curl -fsSL https://raw.githubusercontent.com/juanjourbano/zsh-quick-config/main/.zshrc > $HOME/.zshrc
+
+# Copying zsh-cp command
+# This command will allow to rapidly configure zsh on a non-root user
+curl -fsSL https://raw.githubusercontent.com/juanjourbano/zsh-quick-config/main/zsh-cp > /usr/local/bin/zsh-cp
