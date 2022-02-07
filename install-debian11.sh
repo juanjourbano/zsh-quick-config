@@ -1,9 +1,14 @@
 #!/bin/bash
 
-sudo apt update
+if [ $(whoami) != "root" ]; then
+	echo "You must be root"
+	exit 1
+fi
+
+apt update
 
 # Install zsh
-sudo apt install zsh
+apt install zsh
 
 # Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
